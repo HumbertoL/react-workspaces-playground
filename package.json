@@ -3,7 +3,13 @@
   "private": true,
   "scripts": {
     "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
-    "deploy": "FORCE_COLOR=true lerna run deploy"
+    "deploy": "FORCE_COLOR=true lerna run deploy",
+    "start": "nf start -p 3000 -j Procfile.dev",
+    "start:client": "yarn run start:optout && yarn run start:freetrial && yarn run start:signup",
+    "start:optout": "cd packages/apps/opt-out && npm start",
+    "start:freetrial": "cd packages/apps/free-trial && npm start",
+    "start:signup": "cd packages/apps/sign-up && npm start",
+    "start:prod": "nf start -p 3000"
   },
   "workspaces": {
     "packages": [
@@ -18,6 +24,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.6.3",
+    "foreman": "3.0.1",
     "jest-prop-type-error": "^1.1.0",
     "lerna": "^3.10.7",
     "prettier": "^1.16.1"
@@ -36,6 +44,11 @@
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.6.0"
   },
+  "engines": {
+    "node": "^8.16.0",
+    "npm": "^6.4.1"
+  },
+  "engineStrict": true,
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",

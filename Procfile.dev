@@ -1,0 +1,4 @@
+api: cd server && npm run start
+optout: cd packages/apps/opt-out && npm start
+freetrial: cd packages/apps/free-trial && npm start
+signup: cd packages/apps/sign-up && npm start

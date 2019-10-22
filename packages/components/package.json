@@ -1,5 +1,5 @@
 {
-  "name": "@project/components",
+  "name": "@www-forms/components",
   "version": "1.0.0",
   "main": "src/index.js",
   "main:src": "src/index.js",

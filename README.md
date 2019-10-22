@@ -70,7 +70,7 @@ Update the `homepage` URL in `app-one/package.json` to reflect your GitHub Pages
 
 ```json
 {
-  "name": "@project/app-one",
+  "name": "@www-forms/app-one",
   "private": true,
   "homepage": "https://react-workspaces.github.io/react-workspaces-playground",
   "scripts": {

@@ -1,0 +1,37 @@
+{
+  "name": "sign-up",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "4.5.0",
+    "@material-ui/icons": "4.4.1",
+    "@material-ui/lab": "4.0.0-alpha.27",
+    "@react-workspaces/react-scripts": "3.0.1-alpha-07",
+    "@www-forms/components": "1.0.0",
+    "moment": "2.24.0",
+    "react-redux": "7.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-scroll": "1.7.14",
+    "redux": "4.0.4",
+    "redux-devtools-extension": "2.13.8",
+    "redux-thunk": "2.3.0"
+  },
+  "scripts": {
+    "start": "PORT=3003 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

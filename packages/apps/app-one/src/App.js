@@ -3,8 +3,7 @@ import ReactLogo from './ReactLogo.svg';
 import YarnCat from './YarnCat.svg';
 import './App.css';
 
-import {CompOne, CompTwo} from '@project/components';
-
+import {CompOne, CompTwo, getEnvironmentUrlPrefix} from '@www-forms/components';
 class App extends Component {
 	render() {
 		return (
@@ -42,6 +41,9 @@ class App extends Component {
 						</code>
 						<code className="file">
 							packages/components/src/CompTwo/CompTwo.js
+						</code>
+						<code className="file">
+							{getEnvironmentUrlPrefix()}
 						</code>
 					</p>
 					<div className="components">
