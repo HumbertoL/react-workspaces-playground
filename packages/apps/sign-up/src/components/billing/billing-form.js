@@ -17,7 +17,7 @@ import {amber} from '@material-ui/core/colors';
 import {withStyles} from '@material-ui/core/styles';
 import LockIcon from '@material-ui/icons/Lock';
 import {getHelperText} from '@www-forms/components';
-import {Alert, OutlinedSelect, TermsOfUse} from '@www-forms/components';
+import {Alert, OutlinedSelect, Terms} from '@www-forms/components';
 
 const amber800 = amber['800'];
 
@@ -293,7 +293,7 @@ const BillingForm = props => {
 						/>
 					</Grid>
 					<Grid item xs={12}>
-						<TermsOfUse />
+						<Terms />
 					</Grid>
 					<Grid item align="center" xs={12}>
 						<Button

@@ -19,12 +19,7 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import EyeIcon from '@material-ui/icons/Visibility';
 import EyeOffIcon from '@material-ui/icons/VisibilityOff';
-import {
-	Alert,
-	TermsOfUse,
-	getHelperText,
-	hasErrors
-} from '@www-forms/components';
+import {Alert, Terms, getHelperText, hasErrors} from '@www-forms/components';
 
 import AccountInfoExtendedForm from './account-info-extended-form';
 
@@ -206,7 +201,7 @@ const AccountInfoForm = props => {
 					</Grid>
 					<Grid item xs={12}>
 						{/* TODO: pass in the name of the button */}
-						<TermsOfUse />
+						<Terms />
 					</Grid>
 					<Grid item align="center" xs={12}>
 						<Button

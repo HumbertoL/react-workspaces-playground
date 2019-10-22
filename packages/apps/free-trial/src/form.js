@@ -19,7 +19,7 @@ import {
 	PrivacyPolicy,
 	ResponsibleUsePolicy,
 	SuccessDialog,
-	TermsOfUse,
+	Terms,
 	getHelperText
 } from '@www-forms/components';
 
@@ -267,7 +267,7 @@ class FreeTrial extends React.Component {
 								By clicking &quot;Get Started&quot;, you&apos;re
 								creating a Call&ndash;Em&ndash;All account and
 								agree to Call&ndash;Em&ndash;All&apos;s &nbsp;
-								<TermsOfUse />
+								<Terms />
 								,&nbsp;
 								<ResponsibleUsePolicy />
 								, and&nbsp;
