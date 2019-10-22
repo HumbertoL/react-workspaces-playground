@@ -1,5 +1,4 @@
 import {updateAccountInfo as updateAccountInfoAction} from 'actions/account-actions';
-import OutlinedSelect from 'components/common/outlined-select';
 import {
 	StateOptions,
 	TimeZoneOptions,
@@ -15,7 +14,7 @@ import {ListSubheader} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
-import {getHelperText} from '@www-forms/components';
+import {getHelperText, OutlinedSelect} from '@www-forms/components';
 
 const styles = theme => ({
 	subHeader: {
@@ -64,7 +63,7 @@ const ExtendedAccountInfoForm = props => {
 		updateAccountInfo({
 			[name]: value,
 			[`${name}Touched`]: true
-			// isUsernameValid: true,
+			// IsUsernameValid: true,
 		});
 	};
 
@@ -93,19 +92,19 @@ const ExtendedAccountInfoForm = props => {
 		<>
 			<Grid item xs={12}>
 				<TextField
-					error={phoneNumberTouched && Boolean(phoneNumberError)}
 					fullWidth
+					required
+					error={phoneNumberTouched && Boolean(phoneNumberError)}
 					helperText={getHelperText(
 						phoneNumberTouched,
 						phoneNumberError
 					)}
 					label="Phone Number"
 					name="phoneNumber"
-					onChange={handleChange}
 					placeholder="e.g. (972) 123-4567"
-					required
 					value={phoneNumber}
 					variant="outlined"
+					onChange={handleChange}
 				/>
 			</Grid>
 			<Grid item xs={12}>
@@ -114,9 +113,9 @@ const ExtendedAccountInfoForm = props => {
 					helperText={getHelperText(stateTouched, stateError)}
 					label="State"
 					name="state"
-					onChange={handleChange}
 					options={StateOptions}
 					value={state}
+					onChange={handleChange}
 				/>
 			</Grid>
 			<Grid item xs={12}>
@@ -125,27 +124,27 @@ const ExtendedAccountInfoForm = props => {
 					helperText={getHelperText(timeZoneTouched, timeZoneError)}
 					label="Time Zone"
 					name="timeZone"
-					onChange={handleChange}
 					options={TimeZoneOptions}
 					value={timeZone}
+					onChange={handleChange}
 				/>
 			</Grid>
 			<Grid item xs={12}>
 				<TextField
-					error={companyNameTouched && Boolean(companyNameError)}
 					fullWidth
+					required
+					name="companyName"
+					inputProps={inputProps}
+					label="Organization Name"
+					error={companyNameTouched && Boolean(companyNameError)}
+					value={companyName}
+					placeholder="Call-Em-All"
 					helperText={getHelperText(
 						companyNameTouched,
 						companyNameError
 					)}
-					inputProps={inputProps}
-					label="Organization Name"
-					name="companyName"
-					onChange={handleChange}
-					placeholder="Call-Em-All"
-					required
-					value={companyName}
 					variant="outlined"
+					onChange={handleChange}
 				/>
 			</Grid>
 
@@ -159,9 +158,9 @@ const ExtendedAccountInfoForm = props => {
 						)}
 						label="Industry"
 						name="industry"
-						onChange={handleChange}
 						options={IndustryDropDownOptions}
 						value={industry}
+						onChange={handleChange}
 					>
 						{getIndustryOptions()}
 					</OutlinedSelect>
@@ -169,8 +168,8 @@ const ExtendedAccountInfoForm = props => {
 			)}
 			<Grid item xs={12}>
 				<TextField
-					error={howTheyHeardTouched && Boolean(howTheyHeardError)}
 					fullWidth
+					error={howTheyHeardTouched && Boolean(howTheyHeardError)}
 					helperText={getHelperText(
 						howTheyHeardTouched,
 						howTheyHeardError
@@ -178,21 +177,22 @@ const ExtendedAccountInfoForm = props => {
 					inputProps={inputProps}
 					label="How did you hear about us?"
 					name="howTheyHeard"
-					onChange={handleChange}
 					value={howTheyHeard}
 					variant="outlined"
+					onChange={handleChange}
 				/>
 			</Grid>
 			<Grid item xs={12}>
-				<ListSubheader className={classes.subHeader} disableGutters>
+				<ListSubheader disableGutters className={classes.subHeader}>
 					Login Info
 				</ListSubheader>
 			</Grid>
 			{shouldShowPromo && (
 				<Grid item xs={12}>
 					<TextField
-						error={promoCodeTouched && Boolean(promoCodeError)}
 						fullWidth
+						required
+						error={promoCodeTouched && Boolean(promoCodeError)}
 						helperText={getHelperText(
 							promoCodeTouched,
 							promoCodeError
@@ -200,10 +200,9 @@ const ExtendedAccountInfoForm = props => {
 						inputProps={inputProps}
 						label={promoCodeLabel}
 						name="promoCode"
-						onChange={handleChange}
-						required
 						value={promoCode}
 						variant="outlined"
+						onChange={handleChange}
 					/>
 				</Grid>
 			)}

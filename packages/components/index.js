@@ -3,6 +3,9 @@ import 'react-app-polyfill/ie9';
 import 'react-app-polyfill/stable';
 
 export {default as Alert} from './src/alert';
+export {default as ContactUs} from './src/contact-us';
+export {default as LinkButton} from './src/link-button';
+export {default as OutlinedSelect} from './src/outlined-select';
 export {default as PrivacyPolicy} from './src/privacy-policy';
 export {default as ResponsibleUsePolicy} from './src/responsible-use-policy';
 export {default as SuccessDialog} from './src/success-dialog';

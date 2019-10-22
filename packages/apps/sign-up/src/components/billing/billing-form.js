@@ -3,8 +3,6 @@ import {
 	updateBillingForm as updateBillingFormAction,
 	updateBillingState as updateBillingStateAction
 } from 'actions/billing-actions';
-import Alert from 'components/common/alert';
-import Terms from 'components/common/terms';
 import {StateOptions} from 'constants/settings-constants';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -19,7 +17,7 @@ import {amber} from '@material-ui/core/colors';
 import {withStyles} from '@material-ui/core/styles';
 import LockIcon from '@material-ui/icons/Lock';
 import {getHelperText} from '@www-forms/components';
-import OutlinedSelect from 'components/common/outlined-select';
+import {Alert, OutlinedSelect, TermsOfUse} from '@www-forms/components';
 
 const amber800 = amber['800'];
 
@@ -140,10 +138,10 @@ const BillingForm = props => {
 				</Tooltip>
 			</div>
 
-			<ListSubheader className={classes.subHeader} disableGutters>
+			<ListSubheader disableGutters className={classes.subHeader}>
 				Account Info
 			</ListSubheader>
-			<Alert message={apiError} open={Boolean(apiError)} isError />
+			<Alert isError message={apiError} open={Boolean(apiError)} />
 			<form>
 				<Grid
 					container
@@ -154,75 +152,75 @@ const BillingForm = props => {
 					<Grid item xs={6}>
 						<TextField
 							autoFocus
-							className={classes.textFieldStyles}
-							error={Boolean(firstNameError)}
 							fullWidth
+							required
+							variant="outlined"
 							helperText={getHelperText(
 								firstNameTouched,
 								firstNameError
 							)}
 							inputProps={inputProps}
-							label="First Name"
+							className={classes.textFieldStyles}
 							name="firstName"
-							onChange={handleChange}
-							placeholder="James"
-							required
 							value={firstName}
-							variant="outlined"
+							placeholder="James"
+							error={Boolean(firstNameError)}
+							label="First Name"
+							onChange={handleChange}
 						/>
 					</Grid>
 					<Grid item xs={6}>
 						<TextField
-							error={Boolean(lastNameError)}
 							fullWidth
+							required
+							name="lastName"
+							inputProps={inputProps}
+							label="Last Name"
+							error={Boolean(lastNameError)}
+							value={lastName}
+							placeholder="Smith"
 							helperText={getHelperText(
 								lastNameTouched,
 								lastNameError
 							)}
-							inputProps={inputProps}
-							label="Last Name"
-							name="lastName"
-							onChange={handleChange}
-							placeholder="Smith"
-							required
-							value={lastName}
 							variant="outlined"
+							onChange={handleChange}
 						/>
 					</Grid>
 					<Grid item xs={12}>
 						<TextField
-							error={Boolean(cardNumberError)}
 							fullWidth
+							required
+							error={Boolean(cardNumberError)}
+							label="Card Number"
+							name="cardNumber"
+							variant="outlined"
+							value={cardNumber}
+							placeholder="4444333322221111"
 							helperText={getHelperText(
 								cardNumberTouched,
 								cardNumberError
 							)}
-							label="Card Number"
-							name="cardNumber"
-							onChange={handleChange}
 							onKeyDown={handleFormKeyDown}
-							placeholder="4444333322221111"
-							required
-							value={cardNumber}
-							variant="outlined"
+							onChange={handleChange}
 						/>
 					</Grid>
 					<Grid item md={4} sm={5} xs={4}>
 						<TextField
-							error={Boolean(ccExpirationMonthError)}
 							fullWidth
+							required
+							error={Boolean(ccExpirationMonthError)}
+							label="Exp Month"
+							name="ccExpirationMonth"
+							variant="outlined"
+							value={ccExpirationMonth}
+							placeholder="05 for May"
 							helperText={getHelperText(
 								ccExpirationMonthTouched,
 								ccExpirationMonthError
 							)}
-							label="Exp Month"
-							name="ccExpirationMonth"
-							onChange={handleChange}
 							onKeyDown={handleFormKeyDown}
-							placeholder="05 for May"
-							required
-							value={ccExpirationMonth}
-							variant="outlined"
+							onChange={handleChange}
 						/>
 					</Grid>
 					<Grid item md={1} sm={2} xs={1} className={classes.slash}>
@@ -230,36 +228,36 @@ const BillingForm = props => {
 					</Grid>
 					<Grid item md={4} sm={5} xs={4}>
 						<TextField
-							className={classes.textFieldStyles}
-							error={Boolean(ccExpirationYearError)}
 							fullWidth
+							required
+							className={classes.textFieldStyles}
 							helperText={getHelperText(
 								ccExpirationYearTouched,
 								ccExpirationYearError
 							)}
 							label="Exp Year"
 							name="ccExpirationYear"
-							onChange={handleChange}
-							onKeyDown={handleFormKeyDown}
-							placeholder="22 for 2022"
-							required
+							error={Boolean(ccExpirationYearError)}
 							value={ccExpirationYear}
+							placeholder="22 for 2022"
 							variant="outlined"
+							onKeyDown={handleFormKeyDown}
+							onChange={handleChange}
 						/>
 					</Grid>
 					<Grid item md={3} sm={12} xs={3}>
 						<TextField
-							error={Boolean(cvcError)}
 							fullWidth
-							helperText={getHelperText(cvcTouched, cvcError)}
+							required
+							error={Boolean(cvcError)}
 							label="CVN"
 							name="cvc"
-							onChange={handleChange}
-							onKeyDown={handleFormKeyDown}
-							placeholder="123"
-							required
-							value={cvc}
 							variant="outlined"
+							value={cvc}
+							placeholder="123"
+							helperText={getHelperText(cvcTouched, cvcError)}
+							onKeyDown={handleFormKeyDown}
+							onChange={handleChange}
 						/>
 					</Grid>
 					<Grid item xs={6}>
@@ -271,40 +269,40 @@ const BillingForm = props => {
 							)}
 							label="State"
 							name="billingState"
-							onChange={handleBillingState}
 							options={StateOptions}
 							value={billingState}
+							onChange={handleBillingState}
 						/>
 					</Grid>
 					<Grid item xs={6}>
 						<TextField
-							error={Boolean(billingZipCodeError)}
 							fullWidth
+							required
+							error={Boolean(billingZipCodeError)}
+							label="Postal Code"
+							name="billingZipCode"
+							variant="outlined"
+							value={billingZipCode}
+							placeholder="75095"
 							helperText={getHelperText(
 								billingZipCodeTouched,
 								billingZipCodeError
 							)}
-							label="Postal Code"
-							name="billingZipCode"
-							onChange={handleChange}
 							onKeyDown={handleFormKeyDown}
-							placeholder="75095"
-							required
-							value={billingZipCode}
-							variant="outlined"
+							onChange={handleChange}
 						/>
 					</Grid>
 					<Grid item xs={12}>
-						<Terms />
+						<TermsOfUse />
 					</Grid>
 					<Grid item align="center" xs={12}>
 						<Button
 							className={classes.button}
 							color="primary"
 							disabled={isButtonDisabled || undefined}
-							onClick={submitBilling}
 							size="large"
 							variant="contained"
+							onClick={submitBilling}
 						>
 							{isPosting ? (
 								<CircularProgress size={25} color="inherit" />

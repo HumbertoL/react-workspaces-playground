@@ -2,7 +2,6 @@ import {
 	submitAccountInfo as submitAccountInfoAction,
 	updateAccountInfo as updateAccountInfoAction
 } from 'actions/account-actions';
-import Terms from 'components/common/terms';
 import {getLoginUrl} from 'constants/url-constants';
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
@@ -20,9 +19,13 @@ import TextField from '@material-ui/core/TextField';
 import {withStyles} from '@material-ui/core/styles';
 import EyeIcon from '@material-ui/icons/Visibility';
 import EyeOffIcon from '@material-ui/icons/VisibilityOff';
-import {getHelperText, hasErrors} from '@www-forms/components';
+import {
+	Alert,
+	TermsOfUse,
+	getHelperText,
+	hasErrors
+} from '@www-forms/components';
 
-import Alert from '../common/alert';
 import AccountInfoExtendedForm from './account-info-extended-form';
 
 const styles = theme => ({
@@ -202,7 +205,8 @@ const AccountInfoForm = props => {
 						/>
 					</Grid>
 					<Grid item xs={12}>
-						<Terms />
+						{/* TODO: pass in the name of the button */}
+						<TermsOfUse />
 					</Grid>
 					<Grid item align="center" xs={12}>
 						<Button
