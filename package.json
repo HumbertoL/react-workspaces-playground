@@ -2,14 +2,20 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage",
+    "build:client": "yarn run build:optout && yarn run build:freetrial && yarn run build:signup",
+    "build:freetrial": "cd packages/apps/free-trial && npm run build",
+    "build:optout": "cd packages/apps/opt-out && npm run build",
+    "build:signup": "cd packages/apps/sign-up && npm run build",
     "deploy": "FORCE_COLOR=true lerna run deploy",
+    "heroku-postbuild": "npm run build:client",
+    "install:client": "npx lerna bootstrap --hoist",
+    "install:server": "cd server && yarn",
+    "install": "yarn run install:client && yarn run install:server",
+    "nf-build:client": "nf run npm run build:client",
+    "start:prod": "nf start -p 3000",
     "start": "nf start -p 3000 -j Procfile.dev",
-    "start:client": "yarn run start:optout && yarn run start:freetrial && yarn run start:signup",
-    "start:optout": "cd packages/apps/opt-out && npm start",
-    "start:freetrial": "cd packages/apps/free-trial && npm start",
-    "start:signup": "cd packages/apps/sign-up && npm start",
-    "start:prod": "nf start -p 3000"
+    "test:server": "npm run nf-build:client && npm run start:prod",
+    "test": "FORCE_COLOR=true lerna run lint && CI=true FORCE_COLOR=true lerna run test -- --coverage"
   },
   "workspaces": {
     "packages": [

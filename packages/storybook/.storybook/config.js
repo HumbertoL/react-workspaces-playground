@@ -1,12 +1,6 @@
 import {addParameters, configure} from '@storybook/react';
 import {themes} from '@storybook/theming';
 
-addParameters({
-	options: {
-		theme: themes.dark
-	}
-});
-
 const comps = require.context(
 	'@www-forms/components/src',
 	true,
