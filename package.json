@@ -2,10 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "build:client": "yarn run build:optout && yarn run build:freetrial && yarn run build:signup",
-    "build:freetrial": "cd packages/apps/free-trial && yarn build",
-    "build:optout": "cd packages/apps/opt-out && yarn build",
-    "build:signup": "cd packages/apps/sign-up && yarn build",
+    "build:client": "npx lerna run build --scope '{free-trial,opt-out,sign-up}'",
     "deploy": "FORCE_COLOR=true lerna run deploy",
     "heroku-postbuild": "yarn run build:client",
     "install:client": "npx lerna bootstrap --hoist",
